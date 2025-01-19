@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livestock Management</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f7;
+            color: #333;
+        }
+        .header {
+            background: linear-gradient(90deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 1.5em;
+            text-align: center;
+            font-size: 1.8em;
+        }
+        .container {
+            margin: 2em auto;
+            max-width: 900px;
+            background: #ffffff;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .form {
+            margin-bottom: 2em;
+        }
+        .form input {
+            margin: 0.5em 0;
+            padding: 1em;
+            width: calc(100% - 2.5em);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+        }
+        .form button {
+            padding: 0.8em 2.5em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 0.5em;
+        }
+        .form button:hover {
+            background-color: #388E3C;
+        }
+        .livestock-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+        .livestock-table th, .livestock-table td {
+            border: 1px solid #ddd;
+            padding: 1em;
+            text-align: left;
+        }
+        .livestock-table th {
+            background-color: #f9f9f9;
+        }
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
+        .delete-btn {
+            color: white;
+            background-color: #f44336;
+            border: none;
+            padding: 0.5em;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        .search {
+            margin-bottom: 2em;
+        }
+        .search input {
+            padding: 1em;
+            width: calc(100% - 2.5em);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+        }
+        .livestock-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 0.5em;
+            vertical-align: middle;
+        }
+        .livestock-name {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-btn {
+            background-color: #ffa500;
+            border: none;
+            padding: 0.5em;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .quantity-btn:hover {
+            background-color: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Livestock Management Dashboard
+    </div>
+    <div class="container">
+        <div class="form">
+            <h2>Add Livestock</h2>
+            <input type="text" id="name" placeholder="Enter Livestock Name">
+            <input type="number" id="quantity" placeholder="Enter Quantity">
+            <input type="text" id="comments" placeholder="Add Comments (Optional)">
+            <button onclick="addLivestock()">Add</button>
+        </div>
+        <div class="search">
+            <h2>Search Livestock</h2>
+            <input type="text" id="search" placeholder="Search by Name" oninput="searchLivestock()">
+        </div>
+        <h2>Livestock Inventory</h2>
+        <table class="livestock-table" id="livestockTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Comments</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Livestock rows will be added dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let livestockData = [
+            { name: "Cow", quantity: 8, comments: "High milk yield", image: "https://via.placeholder.com/50" },
+            { name: "Chicken", quantity: 15, comments: "Egg production", image: "https://via.placeholder.com/50" },
+            { name: "Sheep", quantity: 4, comments: "Low stock, needs attention", image: "https://via.placeholder.com/50" }
+        ];
+
+        function addLivestock() {
+            const name = document.getElementById('name').value.trim();
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const comments = document.getElementById('comments').value.trim();
+
+            if (!name || isNaN(quantity) || quantity <= 0) {
+                alert('Please enter valid livestock details.');
+                return;
+            }
+
+            livestockData.push({ name, quantity, comments, image: "https://via.placeholder.com/50" });
+            document.getElementById('name').value = '';
+            document.getElementById('quantity').value = '';
+            document.getElementById('comments').value = '';
+            renderTable();
+        }
+
+        function deleteLivestock(index) {
+            livestockData.splice(index, 1);
+            renderTable();
+        }
+
+        function increaseQuantity(index) {
+            livestockData[index].quantity += 1;
+            renderTable();
+        }
+
+        function decreaseQuantity(index) {
+            if (livestockData[index].quantity > 1) {
+                livestockData[index].quantity -= 1;
+            } else {
+                alert('Quantity cannot be less than 1.');
+            }
+            renderTable();
+        }
+
+        function searchLivestock() {
+            const query = document.getElementById('search').value.trim().toLowerCase();
+            const filteredData = livestockData.filter(item => item.name.toLowerCase().includes(query));
+            renderTable(filteredData);
+        }
+
+        function renderTable(data = livestockData) {
+            const tableBody = document.getElementById('livestockTable').querySelector('tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach((item, index) => {
+                const row = document.createElement('tr');
+
+                const nameCell = document.createElement('td');
+                nameCell.classList.add('livestock-name');
+                nameCell.innerHTML = `<img src="${item.image}" alt="Livestock" class="livestock-image"> ${item.name}`;
+                row.appendChild(nameCell);
+
+                const quantityCell = document.createElement('td');
+                quantityCell.textContent = item.quantity;
+                if (item.quantity < 5) {
+                    quantityCell.innerHTML += ' <span class="alert">Low Stock!</span>';
+                }
+                row.appendChild(quantityCell);
+
+                const commentsCell = document.createElement('td');
+                commentsCell.textContent = item.comments || 'N/A';
+                row.appendChild(commentsCell);
+
+                const actionCell = document.createElement('td');
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = 'delete-btn';
+                deleteButton.onclick = () => deleteLivestock(index);
+                actionCell.appendChild(deleteButton);
+
+                const increaseButton = document.createElement('button');
+                increaseButton.textContent = '+';
+                increaseButton.className = 'quantity-btn';
+                increaseButton.onclick = () => increaseQuantity(index);
+                actionCell.appendChild(increaseButton);
+
+                const decreaseButton = document.createElement('button');
+                decreaseButton.textContent = '-';
+                decreaseButton.className = 'quantity-btn';
+                decreaseButton.onclick = () => decreaseQuantity(index);
+                actionCell.appendChild(decreaseButton);
+
+                row.appendChild(actionCell);
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initial render
+        renderTable();
+    </script>
+</body>
+</html>
