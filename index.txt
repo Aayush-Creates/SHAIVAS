@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Agri Data Portal</h1>
+
+        <section>
+            <h2>Weather Information</h2>
+            <form id="weather-form">
+                <label for="city">Enter City:</label>
+                <input type="text" id="city" name="city" required>
+                <button type="submit">Get Weather</button>
+            </form>
+            <div id="weather-output"></div>
+        </section>
+
+        <section>
+            <h2>Market Price</h2>
+            <form id="market-form">
+                <label for="crop-name">Enter Crop Name:</label>
+                <input type="text" id="crop" name="crop-name" required>
+                <button onclick="displayPrice()">Get Market Price</button>
+            </form>
+            <div id="crop-price-output"></div>
+        </section>
+
+        <section>
+            <h2>Crop ETo Calculation</h2>
+            <form id="eto-form">
+                <label for="crop-type">Enter Crop Type:</label>
+                <input type="text" id="crop-type" name="crop-type" required>
+                <button type="submit">Calculate ETo</button>
+            </form>
+            <div id="eto-output"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
