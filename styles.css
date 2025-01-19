@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('images/back2.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.5); 
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 300px;
+ transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.container:hover {
+    transform: translateY(-10px); /* Moves the container up slightly */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increases shadow intensity */
+}
+
+button {
+    padding: 10px;
+    background-color: #ff5722; /* Orange color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth hover animations */
+}
+
+/* Hover effect for button */
+button:hover {
+    background-color: #e64a19; /* Darker orange */
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+font-size: 24px;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555555;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #ff5722; /* Highlight border color */
+    outline: none; /* Removes default outline */
+    box-shadow: 0 0 5px rgba(255, 87, 34, 0.5); /* Adds glowing effect */
+}
+
+button:hover {
+    background-color: #e64a19;
+  transform: scale(1.05);
+}
+
+input[readonly] {
+    background-color: #f0f0f0;
+    border: 1px solid #dddddd;
+}
+
