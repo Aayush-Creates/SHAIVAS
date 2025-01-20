@@ -193,35 +193,35 @@
     <section class="problems">
         <h2>Problems and Solutions</h2>
         <div class="problem">
-            <img src="wather_site/CropScheduling" alt="Crop Scheduling">
+            <img src="https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638892233/EducationHub/photos/crops-growing-in-thailand.jpg" alt="Crop Scheduling">
             <div class="problem-content">
                 <h3>Problem 1: Crop Scheduling</h3>
                 <p>Solution: Use our dynamic scheduling tools to plan crop rotations and maximize output throughout the year.</p>
             </div>
         </div>
         <div class="problem">
-            <img src="/api/placeholder/120/120" alt="Soil Health Monitoring">
+            <img src="https://www.thespruce.com/thmb/yNhh0o4rY-GSQ9yDtCFYJocBCDY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/healthy-soil-and-how-to-make-it-2539853-hero-fdf9b0280dca41cb8ae9614e6fc4a0b0.jpg" alt="Soil Health Monitoring">
             <div class="problem-content">
                 <h3>Problem 2: Soil Health Monitoring</h3>
                 <p>Solution: Analyze soil data with our advanced tools to determine nutrient needs and ensure healthy crops.</p>
             </div>
         </div>
         <div class="problem">
-            <img src="/api/placeholder/120/120" alt="Real-Time Crop Monitoring">
+            <img src="https://www.electropages.com/storage/app/media/2021/August/crop%20monitoring%20system.og.png" alt="Real-Time Crop Monitoring">
             <div class="problem-content">
                 <h3>Problem 3: Real-Time Crop Monitoring</h3>
                 <p>Solution: Access 24/7 surveillance of your crops through smart sensors and mobile apps for immediate insights into crop health and growth patterns.</p>
             </div>
         </div>
         <div class="problem">
-            <img src="/api/placeholder/120/120" alt="Pest & Disease Management">
+            <img src="https://viseorganic.com/assets/images/blogs/17273331553webp.webp" alt="Pest & Disease Management">
             <div class="problem-content">
                 <h3>Problem 4: Pest & Disease Management</h3>
                 <p>Solution: Receive instant alerts about potential pest infestations or disease outbreaks, with AI-powered recommendations for treatment.</p>
             </div>
         </div>
         <div class="problem">
-            <img src="/api/placeholder/120/120" alt="Weather Intelligence">
+            <img src="https://static.vecteezy.com/system/resources/previews/033/228/638/non_2x/3d-realistic-cloud-with-sun-in-cartoon-style-isolated-on-blue-background-weather-forecast-icon-illustration-vector.jpg" alt="Weather Intelligence">
             <div class="problem-content">
                 <h3>Problem 5: Weather Intelligence</h3>
                 <p>Solution: Get accurate weather forecasts and alerts customized to your field location, helping you make timely decisions about irrigation and crop protection.</p>
