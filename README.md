@@ -5,6 +5,7 @@ This project is an AI-based solution designed to empower farmers by providing ac
 <h2>
 ✨ Features
 </h2>
+
 🌱 Crop Prediction: Predict the most suitable crop based on soil conditions, weather, and other environmental factors.
 
 🌾 Crop Recommendation: Provide personalized crop suggestions for optimized yield and profitability.
@@ -14,24 +15,31 @@ This project is an AI-based solution designed to empower farmers by providing ac
 🌧️ Rainfall Prediction: Forecast rainfall to help farmers plan irrigation and other water-dependent activities.
 
 📊 Yield Prediction: Estimate the expected yield of crops based on input data such as weather, soil, and farming practices.
+
 <h2>
+
 💻 Technologies Used
+
 </h2>
 
 <h3>
 Backend
 </h3>
+
 🐍 Python: Used for building machine learning models and APIs.
 
 🐘 PHP: Server-side scripting for integrating the backend logic.
+
 <h3>
 Frontend
 </h3>
+
 🌐 HTML/CSS: Structuring and styling the web application.
 
 🎨 Bootstrap 4: Responsive and user-friendly design.
 
 ⚡ JavaScript: Client-side interactions and logic.
+
 <h3>
 Libraries Used
 </h3>
@@ -59,13 +67,13 @@ View predictions and recommendations provided by the system.
 
 Contributions are welcome! Please follow these steps:
 
-Fork the repository.
+1. Fork the repository.
 
-Create a new branch for your feature/bugfix.
+2. Create a new branch for your feature/bugfix.
 
-Commit your changes and push them to your forked repository.
+3. Commit your changes and push them to your forked repository.
 
-Create a pull request describing your changes.
+4. Create a pull request describing your changes.
 
 📧 Contact
 
