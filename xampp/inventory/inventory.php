@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "Aayush@967";
+$password = "";
 $dbname = "farm_inventory";
 
 // Create connection
