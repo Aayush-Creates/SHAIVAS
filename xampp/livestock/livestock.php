@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "Aayush@967";
+$password = "";
 $dbname = "livestock_management";
 
 // Create connection
