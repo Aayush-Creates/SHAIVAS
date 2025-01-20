@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Population Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+ background-image: url('images/back2.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            padding: 10px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555555;
+        }
+
+        select, input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[readonly], select {
+            background-color: #f0f0f0;
+            border: 1px solid #dddddd;
+        }
+
+        #resultBox {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Population Calculator</h1>
+        <form id="cropForm">
+            <label for="cropType">Select Crop:</label>
+            <select id="cropType" required>
+                <option value="corn">Corn</option>
+                <option value="soybean">Soybean</option>
+                <option value="wheat">Wheat</option>
+                <option value="cotton">Cotton</option>
+            </select>
+
+            <label for="standCount">Stand Count:</label>
+            <input type="number" id="standCount" required min="0" placeholder="Enter stand count">
+            
+            <label for="rowLength">Length of Row in Feet:</label>
+            <input type="number" id="rowLength" required min="0" placeholder="Enter row length">
+            
+            <label for="rowSpacing">Row Spacing in Inches:</label>
+            <input type="number" id="rowSpacing" required min="0" placeholder="Enter row spacing">
+            
+            <button type="button" id="calculate">Calculate</button>
+        </form>
+
+        <div id="resultBox">
+            <p><strong>Population:</strong> <span id="population">-</span> plants/acre</p>
+            <p><strong>Yield Approximation:</strong> <span id="yieldApprox">-</span> bushels/acre</p>
+            <p><strong>Yield Loss:</strong> <span id="yieldLoss">-</span>%</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('calculate').addEventListener('click', () => {
+            const cropType = document.getElementById('cropType').value;
+            const standCount = parseFloat(document.getElementById('standCount').value);
+            const rowLength = parseFloat(document.getElementById('rowLength').value);
+            const rowSpacing = parseFloat(document.getElementById('rowSpacing').value);
+
+            if (isNaN(standCount) || isNaN(rowLength) || isNaN(rowSpacing)) {
+                alert('Please fill out all fields with valid numbers.');
+                return;
+            }
+
+            if (standCount <= 0 || rowLength <= 0 || rowSpacing <= 0) {
+                alert('Please enter values greater than zero.');
+                return;
+            }
+
+            // Crop-specific values
+            const cropData = {
+                corn: { idealPlantsPerAcre: 30000, yieldPerPlant: 0.05 },
+                soybean: { idealPlantsPerAcre: 150000, yieldPerPlant: 0.03 },
+                wheat: { idealPlantsPerAcre: 1200000, yieldPerPlant: 0.001 },
+                cotton: { idealPlantsPerAcre: 50000, yieldPerPlant: 0.02 }
+            };
+
+            const { idealPlantsPerAcre, yieldPerPlant } = cropData[cropType];
+
+            // Calculations
+            const rowSpacingFeet = rowSpacing / 12; // Convert inches to feet
+            const plantsPerAcre = (standCount / rowLength) * (43560 / rowSpacingFeet);
+            const yieldLoss = Math.max(0, 100 - (plantsPerAcre / idealPlantsPerAcre) * 100);
+            const yieldApproximation = plantsPerAcre * yieldPerPlant;
+
+            // Display results
+            document.getElementById('population').textContent = Math.round(plantsPerAcre).toLocaleString();
+            document.getElementById('yieldApprox').textContent = yieldApproximation.toFixed(2);
+            document.getElementById('yieldLoss').textContent = yieldLoss.toFixed(2);
+        });
+    </script>
+</body>
+</html>
