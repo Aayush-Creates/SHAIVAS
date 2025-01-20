@@ -26,7 +26,7 @@ This project is an AI-based solution designed to empower farmers by providing ac
 Backend
 </h3>
 
-🐍 Python: Used for building machine learning models and APIs.
+🐍 Python: Used for building machine learning models.
 
 🐘 PHP: Server-side scripting for integrating the backend logic.
 
