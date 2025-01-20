@@ -106,3 +106,45 @@ document.getElementById("eto-form").addEventListener("submit", (e) => {
 
     document.getElementById("eto-output").innerHTML = etoOutput;
 });
+
+// Event listener for market form submission
+document.getElementById("market-form").addEventListener("submit", async (e) => {
+    e.preventDefault(); // Prevent form submission
+
+    const city = document.getElementById("city").value;
+    const crop = document.getElementById("crop").value;
+
+    if (!city || !crop) {
+        alert("Please provide both city and crop.");
+        return;
+    }
+
+    try {
+        // Send AJAX request to the PHP script with city and crop data
+        const response = await fetch('get_crop_price.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ city: city, crop: crop })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Display the fetched price data
+            document.getElementById("crop-price-output").innerHTML = `
+                <h3>Price for ${data.crop} in ${data.city}:</h3>
+                <p>Price: ₹${data.price} per unit</p>
+            `;
+        } else {
+            // Display error message if no data is found
+            document.getElementById("crop-price-output").innerHTML = `
+                <p>${data.message}</p>
+            `;
+        }
+    } catch (error) {
+        console.error("Error fetching market price:", error);
+        alert("An error occurred while fetching market price. Please try again.");
+    }
+});
