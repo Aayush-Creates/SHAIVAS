@@ -39,4 +39,4 @@ Increased Efficiency: Proactive response to weather events and early detection o
 Reduced Costs: Optimize resource usage (fertilizers, pesticides) and minimize crop losses.
 Improved Yields: Enhanced decision-making leading to higher crop productivity.
 Better Market Access: Access to real-time market information for informed selling decisions.
-Empowerment: Provides farmers with valuable tools and knowledge to improve their livelihoods. gh
+Empowerment: Provides farmers with valuable tools and knowledge to improve their livelihoods. 
