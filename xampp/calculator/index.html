@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Population Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Population</h1>
+        <form id="cropForm">
+            <label for="standCount">Stand Count:</label>
+            <input type="number" id="standCount" required>
+
+            <label for="rowLength">Length of Row in Feet:</label>
+            <input type="number" id="rowLength" required>
+
+            <label for="rowSpacing">Row Spacing in Inches:</label>
+            <input type="number" id="rowSpacing" required>
+
+            <button type="button" id="calculate">Calculate</button>
+
+            <label for="population">Population (Plants/Acre):</label>
+            <input type="text" id="population" readonly>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
