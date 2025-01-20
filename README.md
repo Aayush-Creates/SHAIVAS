@@ -33,7 +33,7 @@ Monetization:
 3)Partnerships: Collaborate with input providers (fertilizer, seed companies) for targeted advertising and co-marketing opportunities.
 
 
-Benefits:
+Benefits are
 
 Increased Efficiency: Proactive response to weather events and early detection of crop issues.
 Reduced Costs: Optimize resource usage (fertilizers, pesticides) and minimize crop losses.
