@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $plantsPerAcre = ($standCount / $rowLength) * (43560 / $rowSpacingFeet);
         echo json_encode(["population" => round($plantsPerAcre)]);
     } else {
-        echo json_encode(["error" => "Invalid input values"]);
+        echo json_encode(["error" => "Invalid input values"])
     }
 } else {
-    echo json_encode(["error" => "Invalid request method"]);
+    echo json_encode(["error" => "Invalid request method"])
 }
 ?>
