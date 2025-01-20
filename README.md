@@ -21,12 +21,12 @@ weather and alerts take from shubh
 crop management from kartikey
 data comes from uday's soil description
 calculator section add from shikhar to find the yield and losses (take all crops as input that are seeded)based on %
-shubh will make another website that will take input about different crops and 
+shubh will make another website that will take input about different crops and  pests management webpage
 suggest the weather for harvesting and guidance overall.
 aayush will integrate all that separate codes into one and work on inventory&livestock management.
 
 
-Monetization:
+Monetization are
 
 1)Subscription Model: Offer tiered subscription plans with varying levels of features and access.
 2)Value-added Services: Charge for premium features like advanced analytics, expert consultations, and integration with farm equipment.
