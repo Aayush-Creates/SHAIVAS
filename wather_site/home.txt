@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f2;
+        }
+
+        header {
+            background: #8bc34a;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        nav {
+            background: #558b2f;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .banner {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: #f1f8e9;
+            border-bottom: 2px solid #c5e1a5;
+        }
+
+        .banner h2 {
+            font-size: 2.5rem;
+            color: #558b2f;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            color: #4e342e;
+            margin-top: 10px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: white;
+            border: 1px solid #c5e1a5;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            width: 280px;
+            transition: transform 0.2s;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            color: #558b2f;
+        }
+
+        .feature p {
+            color: #4e342e;
+            font-size: 1rem;
+        }
+
+        .problems {
+            padding: 2rem 1rem;
+            background: #ffffff;
+            border-top: 2px solid #c5e1a5;
+        }
+
+        .problems h2 {
+            text-align: center;
+            color: #558b2f;
+            margin-bottom: 2rem;
+        }
+
+        .problem {
+            display: flex;
+            align-items: center;
+            background: #f4f4f2;
+            border: 1px solid #c5e1a5;
+            border-radius: 8px;
+            margin: 1rem auto;
+            padding: 1rem;
+            max-width: 700px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem img {
+            width: 120px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem-content h3 {
+            margin: 0;
+            color: #4e342e;
+        }
+
+        .problem-content p {
+            margin: 5px 0;
+            color: #4e342e;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #8bc34a;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Farm Management System</h1>
+        <p>Your all-in-one platform for efficient agricultural management</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Farm Management</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="banner">
+        <h2>Empowering Farmers with Technology</h2>
+        <p>Manage your crops and farm resources efficiently with our easy-to-use platform. Optimize productivity, improve planning, and stay ahead in the field.</p>
+    </div>
+
+    <section class="features">
+        <div class="feature">
+            <h3>Crop Management</h3>
+            <p>Plan and monitor crop schedules, health, and yields for maximum productivity.</p>
+        </div>
+        <div class="feature">
+            <h3>Livestock Management</h3>
+            <p>Keep track of livestock health, breeding, and feed schedules effortlessly.</p>
+        </div>
+        <div class="feature">
+            <h3>Agri Data Insights</h3>
+            <p>Access critical agricultural data to make informed decisions and stay competitive.</p>
+        </div>
+    </section>
+
+    <section class="problems">
+        <h2>Problems and Solutions</h2>
+        <div class="problem">
+            <img src="wather_site/CropScheduling" alt="Crop Scheduling">
+            <div class="problem-content">
+                <h3>Problem 1: Crop Scheduling</h3>
+                <p>Solution: Use our dynamic scheduling tools to plan crop rotations and maximize output throughout the year.</p>
+            </div>
+        </div>
+        <div class="problem">
+            <img src="/api/placeholder/120/120" alt="Soil Health Monitoring">
+            <div class="problem-content">
+                <h3>Problem 2: Soil Health Monitoring</h3>
+                <p>Solution: Analyze soil data with our advanced tools to determine nutrient needs and ensure healthy crops.</p>
+            </div>
+        </div>
+        <div class="problem">
+            <img src="/api/placeholder/120/120" alt="Real-Time Crop Monitoring">
+            <div class="problem-content">
+                <h3>Problem 3: Real-Time Crop Monitoring</h3>
+                <p>Solution: Access 24/7 surveillance of your crops through smart sensors and mobile apps for immediate insights into crop health and growth patterns.</p>
+            </div>
+        </div>
+        <div class="problem">
+            <img src="/api/placeholder/120/120" alt="Pest & Disease Management">
+            <div class="problem-content">
+                <h3>Problem 4: Pest & Disease Management</h3>
+                <p>Solution: Receive instant alerts about potential pest infestations or disease outbreaks, with AI-powered recommendations for treatment.</p>
+            </div>
+        </div>
+        <div class="problem">
+            <img src="/api/placeholder/120/120" alt="Weather Intelligence">
+            <div class="problem-content">
+                <h3>Problem 5: Weather Intelligence</h3>
+                <p>Solution: Get accurate weather forecasts and alerts customized to your field location, helping you make timely decisions about irrigation and crop protection.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Farm Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
