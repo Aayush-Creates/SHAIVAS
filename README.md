@@ -33,13 +33,18 @@ Frontend
 
 ⚡ JavaScript: Client-side interactions and logic.
 <h3>
-Machine Learning Library
+Libraries Used
 </h3>
-📚 Scikit-learn: Implemented machine learning models for predictions and recommendations.
-<h3>
-API/Model
-</h3>
-🤖 ChatGPT 3.5 Turbo: Utilized for advanced conversational capabilities and dynamic recommendations.
+
+scikit-learn
+
+numpy
+
+panadas
+
+matplotlib
+
+joblib
 
 <h2>
 🚀 Usage
