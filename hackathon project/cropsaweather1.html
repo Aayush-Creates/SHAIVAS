@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, rgb(98, 238, 98), lightyellow);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(#2E7D32 (dark green), #C8E6C9 (light green));
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    nav {
+      background: forestgreen;
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background: yellowgreen;
+      color: black;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    section {
+      display: none;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .chart-container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    button {
+      background: yellowgreen;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: forestgreen;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: calc(100% - 120px);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background: lightyellow;
+    }
+
+    tr:nth-child(even) {
+      background: lightgreen;
+    }
+
+    tr:hover {
+      background: lightyellow;
+    }
+
+    /* Weather Section */
+    .weather-section {
+      background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .weather-section select,
+    .weather-section button {
+      padding: 12px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .weather-section button {
+      background: linear-gradient(45deg, #ff758c, #ff7eb3);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .weather-section button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(255, 118, 136, 0.4);
+    }
+
+    #weather-result {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      width: 60%;
+      max-width: 500px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #weather-result.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Farm Management System</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('crop-management')">Crop Management</a>
+    <a href="#" onclick="showSection('livestock-management')">Livestock Management</a>
+    <a href="#" onclick="showSection('inventory-management')">Inventory Management</a>
+    <a href="#" onclick="showSection('task-management')">Task Management</a>
+    <a href="#" onclick="showSection('data-visualization')">Data Visualization</a>
+    <a href="#" onclick="showSection('pest-disease-management')">Pest & Disease Management</a>
+    <a href="#" onclick="showSection('weather-forecasting')">Weather Forecasting</a>
+    <a href="#" onclick="showSection('reports-analytics')">Reports & Analytics</a>
+  </nav>
+
+  <div class="container">
+    <section id="crop-management" class="active">
+      <h2>Crop Management</h2>
+      <p>Manage crops, scheduling, and reminders for planting, watering, and harvesting.</p>
+      <input type="text" placeholder="Enter crop name...">
+      <button onclick="addData('Crop', 'Enter crop name:', 'crop-table')">Add Crop</button>
+    </section>
+
+    <!-- Other Sections -->
+
+    <section id="weather-forecasting">
+      <h2>Weather Forecasting</h2>
+      <div class="weather-section">
+        <select id="location">
+          <option value="Delhi">Delhi</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Pune">Pune</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Lucknow">Lucknow</option>
+          <option value="Kanpur">Kanpur</option>
+          <option value="Nagpur">Nagpur</option>
+          <option value="Indore">Indore</option>
+          <option value="Thane">Thane</option>
+          <option value="Bhopal">Bhopal</option>
+          <option value="Visakhapatnam">Visakhapatnam</option>
+          <option value="Patna">Patna</option>
+          <option value="Vadodara">Vadodara</option>
+          <option value="Ghaziabad">Ghaziabad</option>
+          <option value="Ludhiana">Ludhiana</option>
+          <option value="Agra">Agra</option>
+          <option value="Nashik">Nashik</option>
+          <option value="Faridabad">Faridabad</option>
+        </select>
+        <button onclick="getWeather()">Analyze</button>
+        <div id="weather-result"></div>
+      </div>
+    </section>
+
+    <!-- Other Sections -->
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    async function getWeather() {
+      const location = document.getElementById("location").value;
+      const apiUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1&format=json`;
+      const geoResponse = await fetch(apiUrl);
+      const geoData = await geoResponse.json();
+
+      if (!geoData.results || geoData.results.length === 0) {
+        alert("Location not found");
+        return;
+      }
+
+      const { latitude, longitude } = geoData.results[0];
+      const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+      const weatherResponse = await fetch(weatherUrl);
+      const weatherData = await weatherResponse.json();
+
+      const temperature = weatherData.current_weather.temperature;
+      
+      let suitableCrops = [], unsuitableCrops = [];
+
+      if (temperature >= 25) {
+        suitableCrops = ["Corn", "Tomatoes", "Cotton"];
+        unsuitableCrops = ["Wheat", "Barley", "Lettuce"];
+      } else if (temperature >= 15) {
+        suitableCrops = ["Wheat", "Rice", "Carrots"];
+        unsuitableCrops = ["Corn", "Bananas"];
+      } else {
+        suitableCrops = ["Peas", "Barley", "Cabbage"];
+        unsuitableCrops = ["Rice", "Tomatoes"];
+      }
+
+      document.getElementById("weather-result").innerHTML =
+        `<h2>Weather Analysis</h2>
+         <p>Temperature: ${temperature}°C</p>
+         <p><strong>Suitable Crops:</strong> ${suitableCrops.join(", ")}</p>
+         <p><strong>Unsuitable Crops:</strong> ${unsuitableCrops.join(", ")}</p>`;
+
+      document.getElementById("weather-result").classList.add("show");
+    }
+  </script>
+</body>
+
+</html>

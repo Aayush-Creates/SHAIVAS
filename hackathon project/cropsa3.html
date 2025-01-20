@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm Management System</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f2; /* Light beige background */
+      color: #4e342e; /* Earthy brown text */
+    }
+  
+    header {
+      background: #8bc34a; /* Fresh green */
+      color: #ffffff; /* White text */
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  
+    nav {
+      background: #558b2f; /* Rich green */
+      display: flex;
+      justify-content: center;
+      padding: 0.8rem 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    nav a {
+      color: #ffffff; /* White text */
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background 0.3s, transform 0.2s;
+      border-radius: 5px;
+    }
+  
+    nav a:hover {
+      background: #c5e1a5; /* Soft green background */
+      color: #4e342e; /* Earthy brown text */
+      transform: scale(1.1); /* Slightly increase the size more than before */
+      transition: transform 0.2s ease-in-out, background 0.3s ease, color 0.3s ease; /* Smooth and coordinated transitions */
+    }
+  
+    .container {
+      padding: 30px;
+    }
+  
+    section {
+      display: none;
+      background: #ffffff; /* White background */
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+  
+    section.active {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  
+    h2 {
+      color: #558b2f; /* Rich green */
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+  
+    p {
+      color: #4e342e; /* Earthy brown */
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+  
+    button {
+      background: #8bc34a; /* Fresh green */
+      color: #ffffff; /* White text */
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+  
+    button:hover {
+      background: #558b2f; /* Dark green */
+      transform: scale(1.1);
+    }
+  
+    input[type="text"] {
+      padding: 10px;
+      width: calc(100% - 140px);
+      border: 1px solid #c5e1a5; /* Light green border */
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      background: #f1f8e9; /* Very light green */
+      color: #4e342e; /* Earthy brown text */
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #ffffff; /* White background */
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    th, td {
+      text-align: left;
+      padding: 15px;
+      border: 1px solid #e0e0e0; /* Light border */
+    }
+  
+    th {
+      background: #aed581; /* Medium green */
+      color: #4e342e; /* Earthy brown */
+      text-transform: uppercase;
+    }
+  
+    tr:nth-child(even) {
+      background: #f1f8e9; /* Very light green */
+    }
+  
+    tr:hover {
+      background: #c5e1a5; /* Soft green */
+    }
+
+    section {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Farm Management System</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('crop-management')">Crop Management</a>
+    <a href="#" onclick="showSection('livestock-management')">Livestock Management</a>
+    <a href="#" onclick="showSection('inventory-management')">Inventory Management</a>
+    <a href="#" onclick="showSection('agri-data')">Agri-Data</a>
+    <a href="#" onclick="showSection('crop-calculator')">Crop Calculator</a>
+    <a href="#" onclick="showSection('pest-disease-management')">Pest & Disease Management</a>
+    <a href="#" onclick="showSection('weather-forecasting')">Weather Forecasting</a>
+  </nav>
+
+  <div class="container">
+    <section id="crop-management" class="active">
+      <h2>Crop Management</h2>
+      <p>Manage crops, scheduling, and reminders for planting, watering, and harvesting.</p>
+      <iframe 
+        src="http://localhost/aayush/crop-management-system-main/rainfall_prediction.php#" 
+        style="width: 100%; height: 500px; border: none; border-radius: 10px;">
+      </iframe>
+    </section>
+    
+    <section id="livestock-management">
+      <h2>Livestock Management</h2>
+      <iframe src="http://localhost/aayush/livestock/livestock.php" 
+              style="width: 100%; height: 600px; border: none;">
+      </iframe>
+    </section>
+    
+
+    <section id="inventory-management">
+      <h2>Inventory Management</h2>
+      <iframe src="http://localhost/aayush/inventory/inventory.php" 
+              style="width: 100%; height: 600px; border: none;">
+      </iframe>
+    </section>
+    
+
+    <section id="agri-data">
+      <h2>Agri-Data</h2>
+      <p>Assign tasks to workers and track progress.</p>
+      <input type="text" id="search-tasks" placeholder="Search tasks..." onkeyup="searchTable('tasks-table', this.value)">
+      <button onclick="addData('Task', 'Enter task description:', 'tasks-table')">Add Task</button>
+      <table id="tasks-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Task Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="crop-calculator">
+      <h2>Crop Calculator</h2>
+      <p>Detailed reports on farm productivity and finances.</p>
+      <button onclick="alert('Generating report...')">Generate Report</button>
+    </section>
+
+    <section id="pest-disease-management">
+      <h2>Pest & Disease Management</h2>
+      <p>Database of pests and treatment suggestions.</p>
+      <input type="text" placeholder="Enter pest/disease details...">
+      <button onclick="addData('Pest', 'Enter pest/disease details:', 'pest-table')">Add Record</button>
+      <table id="pest-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Details</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="weather-forecasting">
+      <h2>Weather Forecasting</h2>
+      <p>Get weather updates and recommendations for farming activities.</p>
+      <button onclick="alert('Fetching weather data...')">Fetch Weather</button>
+    </section>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function addData(type, message, tableId) {
+      const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+      const rowCount = table.rows.length + 1;
+      const details = prompt(message);
+      if (details) {
+        const newRow = table.insertRow();
+        newRow.innerHTML = 
+          `<td>${rowCount}</td>
+          <td>${details}</td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>`;
+      }
+    }
+
+    function deleteRow(button) {
+      const row = button.parentElement.parentElement;
+      row.parentElement.removeChild(row);
+    }
+
+    function searchTable(tableId, query) {
+      const table = document.getElementById(tableId);
+      const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+      query = query.toLowerCase();
+
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let match = false;
+
+        for (let j = 0; j < cells.length - 1; j++) {
+          if (cells[j].innerText.toLowerCase().includes(query)) {
+            match = true;
+            break;
+          }
+        }
+
+        rows[i].style.display = match ? '' : 'none';
+      }
+    }
+  </script>
+</body>
+
+</html>

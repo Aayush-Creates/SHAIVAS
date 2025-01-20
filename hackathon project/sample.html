@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm Management System</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f2;
+      color: #4e342e;
+    }
+
+    header {
+      background: #8bc34a;
+      color: #ffffff;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .sidebar {
+      height: 100vh;
+      width: 250px;
+      background: #558b2f;
+      color: #ffffff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 60px;
+      overflow-y: auto;
+      transition: width 0.3s;
+    }
+
+    .sidebar.collapsed {
+      width: 60px;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ffffff;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 1em;
+      transition: background 0.3s, padding-left 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #c5e1a5;
+      color: #4e342e;
+      padding-left: 30px;
+    }
+
+    .sidebar a.collapsed {
+      text-align: center;
+      padding-left: 0;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 15px;
+      right: -40px;
+      background: #8bc34a;
+      color: #ffffff;
+      border: none;
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5em;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+      transition: margin-left 0.3s;
+    }
+
+    .main-content.collapsed {
+      margin-left: 60px;
+    }
+
+    section {
+      display: none;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    section.active {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    h2 {
+      color: #558b2f;
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #4e342e;
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+
+    button {
+      background: #8bc34a;
+      color: #ffffff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #558b2f;
+      transform: scale(1.1);
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: calc(100% - 140px);
+      border: 1px solid #c5e1a5;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      background: #f1f8e9;
+      color: #4e342e;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Farm Management System</h1>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+    <h2>Menu</h2>
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('crop-management')">Crop Management</a>
+    <a href="#" onclick="showSection('livestock-management')">Livestock Management</a>
+    <a href="#" onclick="showSection('inventory-management')">Inventory Management</a>
+    <a href="#" onclick="showSection('agri-data')">Agri-Data</a>
+    <a href="#" onclick="showSection('crop-calculator')">Crop Calculator</a>
+    <a href="#" onclick="showSection('pest-disease-management')">Pest & Disease Management</a>
+    <a href="#" onclick="showSection('weather-forecasting')">Weather Forecasting</a>
+  </div>
+
+  <div class="main-content" id="main-content">
+    <section id="home" class="active">
+      <h2>Welcome to the Farm Management System</h2>
+      <p>Navigate through the menu to manage your farm efficiently.</p>
+    </section>
+    <section id="crop-management">
+      <h2>Crop Management</h2>
+      <p>Manage crops, scheduling, and reminders for planting, watering, and harvesting.</p>
+    </section>
+    <!-- Remaining sections follow here as in the previous code -->
+    <section id="livestock-management">
+        <h2>Livestock Management</h2>
+        <p>Track animal records, vaccinations, and breeding schedules.</p>
+        <input type="text" id="search-livestock" placeholder="Search animals..." onkeyup="searchTable('livestock-table', this.value)">
+        <button onclick="addData('Livestock', 'Enter animal details:', 'livestock-table')">Add Record</button>
+        <table id="livestock-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Animal Details</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+  
+      <section id="inventory-management">
+        <h2>Inventory Management</h2>
+        <p>Track stock of seeds, fertilizers, and equipment.</p>
+        <input type="text" id="search-inventory" placeholder="Search items..." onkeyup="searchTable('inventory-table', this.value)">
+        <button onclick="addData('Inventory', 'Enter item name:', 'inventory-table')">Add Item</button>
+        <table id="inventory-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Item Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+  
+      <section id="agri-data">
+        <h2>Agri-Data</h2>
+        <p>Assign tasks to workers and track progress.</p>
+        <input type="text" id="search-tasks" placeholder="Search tasks..." onkeyup="searchTable('tasks-table', this.value)">
+        <button onclick="addData('Task', 'Enter task description:', 'tasks-table')">Add Task</button>
+        <table id="tasks-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Task Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+  
+      <section id="crop-calculator">
+        <h2>Crop Calculator</h2>
+        <p>Detailed reports on farm productivity and finances.</p>
+        <button onclick="alert('Generating report...')">Generate Report</button>
+      </section>
+  
+      <section id="pest-disease-management">
+        <h2>Pest & Disease Management</h2>
+        <p>Database of pests and treatment suggestions.</p>
+        <input type="text" placeholder="Enter pest/disease details...">
+        <button onclick="addData('Pest', 'Enter pest/disease details:', 'pest-table')">Add Record</button>
+        <table id="pest-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Details</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+  
+      <section id="weather-forecasting">
+        <h2>Weather Forecasting</h2>
+        <p>Get weather updates and recommendations for farming activities.</p>
+        <button onclick="alert('Fetching weather data...')">Fetch Weather</button>
+      </section>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const mainContent = document.getElementById('main-content');
+      sidebar.classList.toggle('collapsed');
+      mainContent.classList.toggle('collapsed');
+    }
+
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+    function addData(type, message, tableId) {
+      const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+      const rowCount = table.rows.length + 1;
+      const details = prompt(message);
+      if (details) {
+        const newRow = table.insertRow();
+        newRow.innerHTML = 
+          `<td>${rowCount}</td>
+          <td>${details}</td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>`;
+      }
+    }
+
+    function deleteRow(button) {
+      const row = button.parentElement.parentElement;
+      row.parentElement.removeChild(row);
+    }
+
+    function searchTable(tableId, query) {
+      const table = document.getElementById(tableId);
+      const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+      query = query.toLowerCase();
+
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let match = false;
+
+        for (let j = 0; j < cells.length - 1; j++) {
+          if (cells[j].innerText.toLowerCase().includes(query)) {
+            match = true;
+            break;
+          }
+        }
+
+        rows[i].style.display = match ? '' : 'none';
+      }
+    }
+  </script>
+</body>
+
+</html>

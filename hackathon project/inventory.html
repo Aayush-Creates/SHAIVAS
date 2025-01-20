@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Inventory Management</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f2; /* Light Beige */
+            color: #4e342e; /* Earthy Brown */
+        }
+        .header {
+            background: linear-gradient(90deg, #8bc34a, #558b2f); /* Fresh Green to Rich Green */
+            color: white;
+            padding: 1.5em;
+            text-align: center;
+            font-size: 1.8em;
+        }
+        .container {
+            margin: 2em auto;
+            max-width: 900px;
+            background: #ffffff; /* White */
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .form-group {
+            margin-bottom: 1em;
+        }
+        .form-group input {
+            padding: 1em;
+            width: calc(100% - 2.5em);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #f1f8e9; /* Very Light Green */
+        }
+        .form-actions {
+            text-align: center;
+        }
+        .form-actions button {
+            padding: 0.8em 2.5em;
+            background-color: #8bc34a; /* Fresh Green */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 0.5em;
+        }
+        .form-actions button:hover {
+            background-color: #558b2f; /* Rich Green */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2em;
+        }
+        th {
+            background-color: #aed581; /* Medium Green */
+            color: white;
+            padding: 1em;
+        }
+        td {
+            padding: 1em;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f8e9; /* Very Light Green */
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff; /* White */
+        }
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
+        .delete-btn, .quantity-btn {
+            color: white;
+            border: none;
+            padding: 0.5em;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .delete-btn {
+            background-color: #f44336;
+        }
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        .quantity-btn {
+            background-color: #ffa500;
+        }
+        .quantity-btn:hover {
+            background-color: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Farm Inventory Management
+    </div>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="item">Item Name:</label>
+            <input type="text" id="item" placeholder="Enter item name">
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" placeholder="Enter quantity">
+        </div>
+
+        <div class="form-actions">
+            <button onclick="addItem()">Add Item</button>
+            <button onclick="searchItem()">Search Item</button>
+        </div>
+
+        <h2>Inventory</h2>
+        <table id="inventory">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="inventory-body">
+                <!-- Items will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let inventory = [];
+
+        function addItem() {
+            const itemName = document.getElementById('item').value;
+            const quantity = parseInt(document.getElementById('quantity').value);
+
+            if (itemName && quantity) {
+                const existingItem = inventory.find(item => item.name.toLowerCase() === itemName.toLowerCase());
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    inventory.push({ name: itemName, quantity });
+                }
+                renderInventory();
+            } else {
+                alert('Please enter valid item details.');
+            }
+        }
+
+        function deleteItem(index) {
+            inventory.splice(index, 1);
+            renderInventory();
+        }
+
+        function searchItem() {
+            const itemName = document.getElementById('item').value.toLowerCase();
+            const filteredInventory = inventory.filter(item => item.name.toLowerCase().includes(itemName));
+            renderInventory(filteredInventory);
+        }
+
+        function changeQuantity(index, operation) {
+            if (operation === 'increase') {
+                inventory[index].quantity++;
+            } else if (operation === 'decrease' && inventory[index].quantity > 0) {
+                inventory[index].quantity--;
+            }
+            renderInventory();
+        }
+
+        function renderInventory(filteredInventory = inventory) {
+            const inventoryTable = document.getElementById('inventory-body');
+            inventoryTable.innerHTML = '';
+            filteredInventory.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>
+                        <button onclick="changeQuantity(${index}, 'increase')" class="quantity-btn">+</button>
+                        <button onclick="changeQuantity(${index}, 'decrease')" class="quantity-btn">-</button>
+                        <button onclick="deleteItem(${index})" class="delete-btn">Delete</button>
+                    </td>
+                `;
+                inventoryTable.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>

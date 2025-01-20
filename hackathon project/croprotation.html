@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Rotation Guide</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ffafcc, #1e3c72); /* Gradient from faded pinkish to dark blue */
+            padding: 20px;
+            color: #fff;
+        }
+        .container {
+            background: linear-gradient(to right, #ffffff, #dfe9f3);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+            width: 50%;
+            margin: auto;
+            color: #333;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        select, button {
+            padding: 12px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        select {
+            background: #f8f9fa;
+            color: #333;
+            border: 2px solid #0072ff;
+        }
+        button {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            transform: scale(1.08);
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 20px;
+            color: #0072ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🌾 Crop Rotation Guide for Indian Farmers 🌾</h2>
+        <label for="crop">Select a Crop:</label>
+        <select id="crop">
+            <option value="wheat">Wheat</option>
+            <option value="rice">Rice</option>
+            <option value="maize">Maize</option>
+            <option value="sugarcane">Sugarcane</option>
+            <option value="cotton">Cotton</option>
+            <option value="barley">Barley</option>
+            <option value="mustard">Mustard</option>
+            <option value="soybean">Soybean</option>
+            <option value="groundnut">Groundnut</option>
+            <option value="millets">Millets</option>
+            <option value="watermelon">Watermelon</option>
+            <option value="muskmelon">Muskmelon</option>
+            <option value="tomato">Tomato</option> <!-- New crop -->
+            <option value="potato">Potato</option> <!-- New crop -->
+            <option value="onion">Onion</option> <!-- New crop -->
+            <option value="garlic">Garlic</option> <!-- New crop -->
+            <option value="spinach">Spinach</option> <!-- New crop -->
+            <option value="carrot">Carrot</option> <!-- New crop -->
+        </select>
+        <br>
+        <label for="action">Choose Action:</label>
+        <select id="action">
+            <option value="sowing">Sowing Season</option>
+            <option value="harvesting">Harvesting Season</option>
+        </select>
+        <br>
+        <button onclick="getInfo()">Get Info</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const cropData = {
+            wheat: { sowing: "October - November", harvesting: "March - April" },
+            rice: { sowing: "June - July", harvesting: "November - December" },
+            maize: { sowing: "June - July", harvesting: "September - October" },
+            sugarcane: { sowing: "February - March", harvesting: "December - January" },
+            cotton: { sowing: "April - May", harvesting: "November - December" },
+            barley: { sowing: "October - November", harvesting: "March - April" },
+            mustard: { sowing: "September - October", harvesting: "February - March" },
+            soybean: { sowing: "June - July", harvesting: "October - November" },
+            groundnut: { sowing: "June - July", harvesting: "September - October" },
+            millets: { sowing: "June - July", harvesting: "September - October" },
+            watermelon: { sowing: "January - March", harvesting: "April - June" },
+            muskmelon: { sowing: "January - March", harvesting: "April - June" },
+            tomato: { sowing: "November - December", harvesting: "February - March" },
+            potato: { sowing: "October - November", harvesting: "January - February" },
+            onion: { sowing: "September - October", harvesting: "December - January" },
+            garlic: { sowing: "October - November", harvesting: "May - June" },
+            spinach: { sowing: "October - November", harvesting: "February - March" },
+            carrot: { sowing: "October - November", harvesting: "February - March" }
+        };
+
+        function getInfo() {
+            const crop = document.getElementById("crop").value;
+            const action = document.getElementById("action").value;
+            const result = cropData[crop][action];
+            document.getElementById("result").innerText = `Best time for ${action} of ${crop}: ${result}`;
+        }
+    </script>
+</body>
+</html>

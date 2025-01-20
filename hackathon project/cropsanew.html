@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, lightgreen, lightyellow);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, green, yellowgreen);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    nav {
+      background: forestgreen;
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background: yellowgreen;
+      color: black;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    section {
+      display: none;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .chart-container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    button {
+      background: yellowgreen;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: forestgreen;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: calc(100% - 120px);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background: lightyellow;
+    }
+
+    tr:nth-child(even) {
+      background: lightgreen;
+    }
+
+    tr:hover {
+      background: lightyellow;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Farm Management System</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('crop-management')">Crop Management</a>
+    <a href="#" onclick="showSection('livestock-management')">Livestock Management</a>
+    <a href="#" onclick="showSection('inventory-management')">Inventory Management</a>
+    <a href="#" onclick="showSection('task-management')">Task Management</a>
+    <a href="#" onclick="showSection('data-visualization')">Data Visualization</a>
+    <a href="#" onclick="showSection('pest-disease-management')">Pest & Disease Management</a>
+    <a href="#" onclick="showSection('weather-forecasting')">Weather Forecasting</a>
+    <a href="#" onclick="showSection('reports-analytics')">Reports & Analytics</a>
+  </nav>
+
+  <div class="container">
+    <section id="crop-management" class="active">
+      <h2>Crop Management</h2>
+      <p>Manage crops, scheduling, and reminders for planting, watering, and harvesting.</p>
+      <iframe 
+        src="http://localhost/aayush/crop-management-system-main/rainfall_prediction.php#" 
+        style="width: 100%; height: 500px; border: none; border-radius: 10px;">
+      </iframe>
+    </section>
+    
+    <section id="livestock-management">
+      <h2>Livestock Management</h2>
+      <p>Track animal records, vaccinations, and breeding schedules.</p>
+      <input type="text" id="search-livestock" placeholder="Search animals..." onkeyup="searchTable('livestock-table', this.value)">
+      <button onclick="addData('Livestock', 'Enter animal details:', 'livestock-table')">Add Record</button>
+      <table id="livestock-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Animal Details</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="inventory-management">
+      <h2>Inventory Management</h2>
+      <p>Track stock of seeds, fertilizers, and equipment.</p>
+      <input type="text" id="search-inventory" placeholder="Search items..." onkeyup="searchTable('inventory-table', this.value)">
+      <button onclick="addData('Inventory', 'Enter item name:', 'inventory-table')">Add Item</button>
+      <table id="inventory-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Item Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="task-management">
+      <h2>Task Management</h2>
+      <p>Assign tasks to workers and track progress.</p>
+      <input type="text" id="search-tasks" placeholder="Search tasks..." onkeyup="searchTable('tasks-table', this.value)">
+      <button onclick="addData('Task', 'Enter task description:', 'tasks-table')">Add Task</button>
+      <table id="tasks-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Task Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="data-visualization">
+      <h2>Data Visualization</h2>
+      <p>View graphs and trends for productivity and resource usage.</p>
+      <div class="chart-container">
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
+
+    <section id="pest-disease-management">
+      <h2>Pest & Disease Management</h2>
+      <p>Database of pests and treatment suggestions.</p>
+      <input type="text" placeholder="Enter pest/disease details...">
+      <button onclick="addData('Pest', 'Enter pest/disease details:', 'pest-table')">Add Record</button>
+      <table id="pest-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Details</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="weather-forecasting">
+      <h2>Weather Forecasting</h2>
+      <p>Get weather updates and recommendations for farming activities.</p>
+      <button onclick="alert('Fetching weather data...')">Fetch Weather</button>
+    </section>
+
+    <section id="reports-analytics">
+      <h2>Reports & Analytics</h2>
+      <p>Detailed reports on farm productivity and finances.</p>
+      <button onclick="alert('Generating report...')">Generate Report</button>
+    </section>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function addData(type, message, tableId) {
+      const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+      const rowCount = table.rows.length + 1;
+      const details = prompt(message);
+      if (details) {
+        const newRow = table.insertRow();
+        newRow.innerHTML = `
+          <td>${rowCount}</td>
+          <td>${details}</td>
+          <td><button onclick="deleteRow(this)">Delete</button></td>
+        `;
+      }
+    }
+
+    function deleteRow(button) {
+      const row = button.parentElement.parentElement;
+      row.parentElement.removeChild(row);
+    }
+
+    function searchTable(tableId, query) {
+      const table = document.getElementById(tableId);
+      const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+      query = query.toLowerCase();
+
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        let match = false;
+
+        for (let j = 0; j < cells.length - 1; j++) {
+          if (cells[j].innerText.toLowerCase().includes(query)) {
+            match = true;
+            break;
+          }
+        }
+
+        rows[i].style.display = match ? '' : 'none';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctx = document.getElementById('chart');
+      if (ctx) {
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+            datasets: [{
+              label: 'Crop Yield (tons)',
+              data: [12, 19, 3, 5],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
