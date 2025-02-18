@@ -80,6 +80,7 @@ project-directory/
 ## Example Screenshots
 
 ![image](https://github.com/user-attachments/assets/20fde018-78c0-499e-aff3-ec89dc501d00)
+![Screenshot 2025-02-18 212209](https://github.com/user-attachments/assets/e176f9a1-defd-4fe8-a917-843dba298ea8)
 
 
 ## Monetization
