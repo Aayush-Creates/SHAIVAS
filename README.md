@@ -182,11 +182,11 @@ project-directory/
 
 # Inventory Dashboard
 
-![Inventory Dashboard](screenshots/Screenshot_2025-02-18_204106.png)
+![Inventory Dashboard] (screenshots/Screenshot_2025-02-18_204106.png)
 
 # Livestock Dashboard
 
-![Livestck Dashboard](screenshots/Screenshot_2025-02-18_204312.png)
+![Livestck Dashboard] (screenshots/Screenshot_2025-02-18_204312.png)
 
 ---
 
