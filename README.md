@@ -180,9 +180,9 @@ project-directory/
 
 ## Example Screenshots
 
-Inventory Dashboard[Screenshot 2025-02-18 204106](https://github.com/user-attachments/assets/057780e7-3f20-4165-9a8a-172ac955ebe9)
+Inventory Dashboard([Screenshot 2025-02-18 204106](https://github.com/user-attachments/assets/057780e7-3f20-4165-9a8a-172ac955ebe9)
 )
-Add Item Form[Screenshot 2025-02-18 204312](https://github.com/user-attachments/assets/db447c13-76da-441f-a758-953eb5d3861b)
+Add Item Form([Screenshot 2025-02-18 204312](https://github.com/user-attachments/assets/db447c13-76da-441f-a758-953eb5d3861b))
 
 ---
 
