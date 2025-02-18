@@ -183,9 +183,6 @@ project-directory/
 ![Inventory Dashboard](screenshot1.png)
 ![Add Item Form](screenshot2.png)
 
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
