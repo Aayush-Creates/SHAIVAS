@@ -79,9 +79,11 @@ project-directory/
 
 ## Example Screenshots
 
-![Dashboard](![image](https://github.com/user-attachments/assets/c1fc365f-fb0a-43e6-8d9f-119f659033f6)
+![Dashboard]((![Screenshot 2025-02-18 212036](https://github.com/user-attachments/assets/8f7fdb9d-a6d8-4c8e-b37c-3602f8eeee24)
 )
-![Crop Management](![image](https://github.com/user-attachments/assets/50c66159-ac2d-4a54-a64b-5cef41bff05f)
+)
+![Crop Management](!(![Screenshot 2025-02-18 212209](https://github.com/user-attachments/assets/7ec84c10-b7b2-44f3-977a-682d79f04ae4)
+)
 )
 
 ## Monetization
