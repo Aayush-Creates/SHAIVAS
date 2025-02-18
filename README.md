@@ -79,8 +79,10 @@ project-directory/
 
 ## Example Screenshots
 
-![Inventory Dashboard](screenshot1.png)
-![Add Item Form](screenshot2.png)
+![Dashboard](![image](https://github.com/user-attachments/assets/c1fc365f-fb0a-43e6-8d9f-119f659033f6)
+)
+![Crop Management](![image](https://github.com/user-attachments/assets/50c66159-ac2d-4a54-a64b-5cef41bff05f)
+)
 
 ## Monetization
 
