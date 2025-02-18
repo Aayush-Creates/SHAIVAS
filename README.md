@@ -180,13 +180,14 @@ project-directory/
 
 ## Example Screenshots
 
-# Inventory Dashboard
-
-![Inventory Dashboard] (screenshots/Screenshot_2025-02-18_204106.png)
-
-# Livestock Dashboard
-
-![Livestck Dashboard] (screenshots/Screenshot_2025-02-18_204312.png)
+![Inventory Dashboard]((!(![Screenshot 2025-02-18 204106](https://github.com/user-attachments/assets/fe74e8f2-64e3-4046-b5ae-65bc9e93f95a)
+)
+)
+)
+![Livestock Dashboard](!(!(![Screenshot 2025-02-18 204312](https://github.com/user-attachments/assets/eee66cdf-c53a-49c5-b1b5-101c25a42143)
+)
+)
+)
 
 ---
 
